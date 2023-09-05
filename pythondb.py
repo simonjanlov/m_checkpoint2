@@ -23,7 +23,11 @@ while True: ## REPL - Read Execute Program Loop
     if cmd == "quit":
         exit()
     elif cmd == "list":
-        pass
+        information = list(read_dict())
+        print("")
+        for word in information:
+            print(f"{word[1]} : {word[2]}")
+        print("")
     elif cmd == "add":
         pass
     elif cmd == "delete":
@@ -31,6 +35,3 @@ while True: ## REPL - Read Execute Program Loop
     else:
         print("Incorrect command. [list/add/delete/quit]")
         continue
-
-    # elif cmd == 'p':
-    #     print(list(read_dict()))
