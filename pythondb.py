@@ -34,7 +34,7 @@ def delete_from_dict(eng_word):
     # borde kanske finnas hantering av exceptions här men har inte hunnit
     dbconn = db_connection()
     cur = dbconn.cursor()
-    cur.execute("DELETE FROM dictionary WHERE word = %s;", (eng_word))
+    cur.execute("DELETE FROM dictionary WHERE word = '{}';".format(eng_word))
     cur.execute("COMMIT;")
     cur.close()
     dbconn.close()
