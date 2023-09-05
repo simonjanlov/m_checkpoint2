@@ -6,7 +6,7 @@ def db_connection():
         port="5432",
         database="dictdb",
         user="postgres",
-        password="pac112") 
+        password="******") 
 
 def read_dict():
     # borde kanske finnas hantering av exceptions här men har inte hunnit
