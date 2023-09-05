@@ -2,8 +2,11 @@ import psycopg2
 
 def db_connection():
     return psycopg2.connect(
-        host="localhost"
-)
+        host="localhost",
+        port="5432",
+        database="dictdb",
+        user="postgres",
+        password="pac112") 
 
 def read_dict():
     dbconn = db_connection()
@@ -20,3 +23,5 @@ while True: ## REPL - Read Execute Program Loop
 
     if cmd == "quit":
         exit()
+    elif cmd == 'p':
+        print(list(read_dict()))
