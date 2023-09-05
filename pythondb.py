@@ -9,6 +9,7 @@ def db_connection():
         password="pac112") 
 
 def read_dict():
+    # borde kanske finnas hantering av exceptions här men har inte hunnit
     dbconn = db_connection()
     cur = dbconn.cursor()
     cur.execute("SELECT id, word, translation FROM dictionary;")
@@ -16,6 +17,19 @@ def read_dict():
     cur.close()
     dbconn.close()
     return rows
+
+
+def add_to_dict(eng_word, swe_translation):
+    # borde kanske finnas hantering av exceptions här men har inte hunnit
+    dbconn = db_connection()
+    cur = dbconn.cursor()
+    cur.execute("INSERT INTO dictionary (word, translation) VALUES (%s, %s);",
+        (eng_word, swe_translation))
+    cur.execute("COMMIT;")
+    cur.close()
+    dbconn.close()
+    print(f"An entry was made - {eng_word} : {swe_translation}")
+
 
 
 while True: ## REPL - Read Execute Program Loop
@@ -29,7 +43,9 @@ while True: ## REPL - Read Execute Program Loop
             print(f"{word[1]} : {word[2]}")
         print("")
     elif cmd == "add":
-        pass
+        english_word = input("Input English word: ")
+        swe_translation = input("Input Swedish translation: ")
+        add_to_dict(english_word, swe_translation)
     elif cmd == "delete":
         pass
     else:
