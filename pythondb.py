@@ -20,8 +20,17 @@ def read_dict():
 
 while True: ## REPL - Read Execute Program Loop
     cmd = input("Command: ")
-
     if cmd == "quit":
         exit()
-    elif cmd == 'p':
-        print(list(read_dict()))
+    elif cmd == "list":
+        pass
+    elif cmd == "add":
+        pass
+    elif cmd == "delete":
+        pass
+    else:
+        print("Incorrect command. [list/add/delete/quit]")
+        continue
+
+    # elif cmd == 'p':
+    #     print(list(read_dict()))
